@@ -5,15 +5,26 @@ function Init(){
 		data: {
 			tableSize:      25,
 			table:          [],
-			timer:        null,
-			playing:      false
+			timer:          null,
+			playing:        false,
+			formations:     null,
+			formation:      null
 		},
 		watch: {
-			tableSize: function(){initTableElements();}
+			tableSize: function(){initTableElements();},
+			formation: function(){setFormation();}
 		}
 	});
-	initTableElements();
+	
 	ResetTimer();
+
+	// Get JSON File Via HTTP request
+	var p1 = request('../JSON/formations.json');
+	p1.then(results=>{
+		app.formations = results[0]['formations'];
+		app.formation = app.formations[0];
+		initTableElements();
+	});
 }
 
 function initTableElements(){
@@ -23,6 +34,15 @@ function initTableElements(){
 			newRow.push(false);
 		}
 		app.table.push(newRow);
+	}
+	setFormation();
+}
+function setFormation(){
+	Clear();
+	if(app.formation != undefined){
+		for(point in app.formation['points']){
+			flipCell(app.formation['points'][point].x, app.formation['points'][point].y);
+		}
 	}
 }
 function ResetTimer(){
@@ -105,4 +125,23 @@ function Clear(){
 			}
 		}
 	}
+}
+var request = function(filename){
+	var p = new Promise((resolve,reject)=>{
+		var req = new XMLHttpRequest();
+		req.onreadystatechange = function(){
+			if (req.readyState == 4 && req.status == 200){
+				//sucessfully recieved data!
+				var data =JSON.parse(req.response);
+				//console.log(data);
+	   			resolve(data);
+			}
+			else if(req.readyState == 4){
+				reject("Error: " + req.status);
+			}
+		};
+		req.open("GET", filename,true);
+		req.send();
+	});
+	return p;
 }
