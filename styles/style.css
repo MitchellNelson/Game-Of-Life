@@ -6,16 +6,24 @@ table{
 	border-spacing:2px;
 	border-color:black;
 	background-color: #343D46;
+	width:100%;
 }
 td{
-	width:1rem;
-	height:1rem;
+	width:1.3rem;
+	height:1.3rem;
 }
 td:hover{
 	cursor: pointer;
 }
+.module{
+	max-width:600px;
+}
 .controlItems{
 	padding:1rem;
+}
+.controlItems:hover{
+	color:grey;
+	cursor: pointer;
 }
 .trueElement{
     -moz-transition: all .1s ease-in;
@@ -29,7 +37,9 @@ td:hover{
 }
 .controls{
 	font-size: 2rem;
-}
-.controls:hover{
-	cursor: pointer;
+	background-color: #1F252A;
+	color:#FFFFFF;
+	padding:.5rem 0 .5rem 0;
+	width:100%;
+	margin:0;
 }
