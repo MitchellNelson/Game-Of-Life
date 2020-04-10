@@ -38,6 +38,7 @@ function play(){
 function stop(){
 	app.playing = false;
 	app.timer.stop();
+	ResetTimer();
 }
 
 function updateCells(){
@@ -73,22 +74,27 @@ function numNeighbors(row, col){
 	var ret = 0;
 	var s = app.tableSize-1
 	//Up
-	if (row > 0 && app.table[row-1][col]){ret++;}
+	if (app.table[wrapVal(row-1)][col]){ret++;}
 	//Up Right
-	if (row > 0 && col < s && app.table[row-1][col+1]){ret++;}
+	if (app.table[wrapVal(row-1)][wrapVal(col+1)]){ret++;}
 	//Right
-	if (col < s && app.table[row][col+1]){ret++;}
+	if (app.table[row][wrapVal(col+1)]){ret++;}
 	//Down Right
-	if (row < s && col < s && app.table[row+1][col+1]){ret++;}
+	if (app.table[wrapVal(row+1)][wrapVal(col+1)]){ret++;}
 	//Down
-	if (row < s && app.table[row+1][col]){ret++;}
+	if (app.table[wrapVal(row+1)][col]){ret++;}
 	//Down Left
-	if (row < s && col > 0 && app.table[row+1][col-1]){ret++;}
+	if (app.table[wrapVal(row+1)][wrapVal(col-1)]){ret++;}
 	//Left
-	if (col > 0 && app.table[row][col-1]){ret++;}
+	if (app.table[row][wrapVal(col-1)]){ret++;}
 	//Left Up
-	if (row > 0 && col > 0 && app.table[row-1][col-1]){ret++;}
+	if (app.table[wrapVal(row-1)][wrapVal(col-1)]){ret++;}
 	return ret;
+}
+function wrapVal(index){
+	if (index == -1){return app.tableSize-1;}
+	if (index == app.tableSize){return 0;}
+	return index;
 }
 
 function Clear(){

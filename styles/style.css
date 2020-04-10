@@ -9,6 +9,9 @@ td{
 	height:1rem;
 	border-radius: .15rem;
 }
+td:hover{
+	cursor: pointer;
+}
 .trueElement{
 	background-color: blue;
 }
@@ -17,4 +20,7 @@ td{
 }
 .controls{
 	font-size: 2rem;
+}
+.controls:hover{
+	cursor: pointer;
 }
