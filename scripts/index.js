@@ -19,7 +19,7 @@ function Init(){
 	ResetTimer();
 
 	// Get JSON File Via HTTP request
-	var p1 = request('../JSON/formations.json');
+	var p1 = request('JSON/formations.json');
 	p1.then(results=>{
 		app.formations = results[0]['formations'];
 		app.formation = app.formations[0];
