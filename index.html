@@ -24,20 +24,18 @@
 					</tr>
 				</table>
 				<div class="controls">
-					<span>
-						
+					<span class="controlItems">
+						<i @Click="updateCells()" class="far fa-arrow-alt-circle-right"></i>
+					</span>
+					<span class="controlItems">
+						<i v-if="playing" @Click="stop();" class="fas fa-stop"></i>
 						<i v-if="!playing" @Click="play();" class="fas fa-play"></i>
 					</span>
-					<span>
-						<i v-if="playing" @Click="stop();" class="fas fa-stop"></i>
-					</span>
-					<span>
-						<i v-if="!playing" @Click="updateCells()" class="far fa-arrow-alt-circle-right"></i>
-					</span>
-					<span>
+					<span class="controlItems">
 						<i @Click="Clear() "class="fas fa-eraser"></i>
 					</span>
-					<select v-if="formation!=undefined" v-model="formation">
+					<select v-if="formation!=undefined" v-model="formation" 
+					        class="controlItems">
 						<option v-for="formation in formations" v-bind:value="formation">
 						{{ formation.name }}
 						</option>
