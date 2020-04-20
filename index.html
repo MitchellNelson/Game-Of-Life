@@ -14,36 +14,40 @@
 			<h1>
 				Conway's Game of Life
 			</h1>
+			<h2>
+				Implemented by 
+				<a href="https://nels4929.github.io" target="_blank">Mitchell Nelson</a>
+			</h2>
 			<div class="module">
 				<table>
 					<tr v-for="row, rowIndex in table">
 						<td v-for="element, colIndex in row" 
-						    :class="{'trueElement': element, 'falseElement':!element}"
-						    @click="flipCell(rowIndex, colIndex);">
-						</td>
-					</tr>
-				</table>
-				<div class="controls">
-					<span class="controlItems">
-						<i @Click="updateCells()" class="far fa-arrow-alt-circle-right"></i>
-					</span>
-					<span class="controlItems">
-						<i v-if="playing" @Click="stop();" class="fas fa-stop"></i>
-						<i v-if="!playing" @Click="play();" class="fas fa-play"></i>
-					</span>
-					<span class="controlItems">
-						<i @Click="Clear() "class="fas fa-eraser"></i>
-					</span>
-					<select v-if="formation!=undefined" v-model="formation" 
-					        class="controlItems">
-						<option v-for="formation in formations" v-bind:value="formation">
-						{{ formation.name }}
-						</option>
-					</select>
-				</div>
-			</div>
-			
-		</center>
-	</div>
+                        :class="{'trueElement': element, 'falseElement':!element}"
+                        @click="flipCell(rowIndex, colIndex);">
+                        </td>
+                    </tr>
+                </table>
+            <div class="controls">
+                <span class="controlItems">
+                    <i @Click="updateCells()" class="far fa-arrow-alt-circle-right"></i>
+                </span>
+                <span class="controlItems">
+                    <i v-if="playing" @Click="stop();" class="fas fa-stop"></i>
+                    <i v-if="!playing" @Click="play();" class="fas fa-play"></i>
+                </span>
+                <span class="controlItems">
+                    <i @Click="Clear() "class="fas fa-eraser"></i>
+                </span>
+                <select v-if="formation!=undefined" v-model="formation" 
+                class="controlItems">
+                    <option v-for="formation in formations" v-bind:value="formation">
+                        {{ formation.name }}
+                    </option>
+                </select>
+            </div>
+        </div>
+
+        </center>
+    </div>
 </body>
 </html>
