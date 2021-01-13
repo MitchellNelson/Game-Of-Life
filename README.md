@@ -2,7 +2,7 @@
 STAT 400 Conway's Game of Life Implementation and Visualization
 
 ## Demo
-A live demo is hosted [here](https://nels4929.github.io/Game-Of-Life/) on my GitHub Pages
+A live demo is hosted [here](https://mitchellnelson.github.io/Game-Of-Life/) on my GitHub Pages
 
 ## Rules
 Conway's Game of Life follows four basic rules:
